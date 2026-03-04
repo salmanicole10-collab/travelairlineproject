@@ -51,3 +51,34 @@ def show_country(country):
     else:
         population = "N/A"
     print("Population:", population)
+
+if "currencies" in country:
+    currencies = country["currencies"]
+    print("Currency:", ", ".join(currencies.keys()))
+else:
+    print("Currency: N/A")
+
+
+if "languages" in country:
+    languages = country["languages"]
+    print("Languages:", ", ".join(languages.values()))
+else:
+    print("Languages: N/A")
+
+
+if "cca2" in country and "cca3" in country:
+    print("Code:", country["cca2"], "/", country["cca3"])
+else:
+    print("Code: N/A")
+
+
+if "timezones" in country:
+    print("Timezones:", ", ".join(country["timezones"]))
+else:
+    print("Timezones: N/A")
+
+
+if "flags" in country:
+    print("Flag:", country["flags"]["png"])
+else:
+    print("Flag: N/A")
