@@ -130,3 +130,8 @@ def load_plans():
         return plans
     except:
         return []
+    
+def save_plans(plans):
+    f = open("plans.json", "w", encoding="utf-8")
+    f.write(str(plans))
+    f.close()
