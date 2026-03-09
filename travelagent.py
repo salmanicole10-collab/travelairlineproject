@@ -186,3 +186,19 @@ def view_plans():
     while i < len(plans):
         print(i, "-", plans[i]["client"], "| total:", plans[i]["total_cost"])
         i = i + 1
+op = input("Option: ")
+
+if op == "1":
+
+        name = input("Country name: ")
+        c = get_country_by_name(name)
+
+        if c == None:
+            print("Country not found")
+        else:
+            show_country(c)
+            show_weather(c)
+            show_timezones(c)
+
+            
+    
