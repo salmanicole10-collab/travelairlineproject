@@ -135,3 +135,14 @@ def save_plans(plans):
     f = open("plans.json", "w", encoding="utf-8")
     f.write(str(plans))
     f.close()
+
+def estimate_cost(stops):
+    total = 0
+
+    # estadia 100 por dia
+    for s in stops:
+        total = total + (s["days"] * 100)
+
+    # transportation 200 entre paises
+    if len(stops) > 1:
+        total = total + (len(stops) - 1) * 200
