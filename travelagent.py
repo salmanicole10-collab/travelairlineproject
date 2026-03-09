@@ -146,3 +146,8 @@ def estimate_cost(stops):
     # transportation 200 entre paises
     if len(stops) > 1:
         total = total + (len(stops) - 1) * 200
+
+    # fee
+    total = total + 50
+
+    return total
