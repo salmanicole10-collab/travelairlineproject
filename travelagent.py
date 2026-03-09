@@ -72,3 +72,39 @@ def show_country(country):
         print("Flag:", country["flags"]["png"])
     else:
         print("Flag: N/A")
+
+def show_weather(country):
+
+    print("--- WEATHER ---")
+
+    lat = None
+    lon = None
+
+    if "latlng" in country:
+        lat = country["latlng"][0]
+        lon = country["latlng"][1]
+
+    if lat == None or lon == None:
+        print("Weather: N/A")
+        return
+
+    url = "https://api.open-meteo.com/v1/forecast?latitude=" + str(lat) + "&longitude=" + str(lon) + "&current_weather=true"
+
+    try:
+        r = requests.get(url)
+
+        if r.status_code == 200:
+            data = r.json()
+
+            if "current_weather" in data:
+                w = data["current_weather"]
+                print("Temp:", w["temperature"], "C")
+                print("Wind:", w["windspeed"])
+            else:
+                print("Weather: N/A")
+        else:
+            print("Weather: N/A")
+
+    except:
+        print("Weather: N/A")
+    
