@@ -117,3 +117,16 @@ def show_timezones(country):
     else:
         print("Timezones: N/A")
     
+def load_plans():
+    try:
+        f = open("plans.json", "r", encoding="utf-8")
+        text = f.read()
+        f.close()
+
+        if text.strip() == "":
+            return []
+
+        plans = eval(text)
+        return plans
+    except:
+        return []
