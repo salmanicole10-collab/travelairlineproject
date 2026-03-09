@@ -186,19 +186,19 @@ def view_plans():
     while i < len(plans):
         print(i, "-", plans[i]["client"], "| total:", plans[i]["total_cost"])
         i = i + 1
-op = input("Option: ")
 
-if op == "1":
+#menu
+while True:
 
-        name = input("Country name: ")
-        c = get_country_by_name(name)
+    print("===== LMS TRAVEL AGENCY =====")
+    print("Pricing Rules:")
+    print("Accommodation: $100 per day per country")
+    print("Transportation between countries: $200")
+    print("Agency service fee: $50")
+    print("Paolo included after a year of travel")
 
-        if c == None:
-            print("Country not found")
-        else:
-            show_country(c)
-            show_weather(c)
-            show_timezones(c)
-
-            
-    
+    print("Menu:")
+    print("1 - Search Country")
+    print("2 - Create Travel Plan")
+    print("3 - View Saved Plans")
+    print("0 - Exit")
