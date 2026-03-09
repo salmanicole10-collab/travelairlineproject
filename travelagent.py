@@ -233,3 +233,33 @@ while True:
             if c == None:
                 print("Country not found")
                 continue
+
+            show_country(c)
+            show_weather(c)
+            show_timezones(c)
+
+            days = int(input("Days: "))
+            start = input("Start date: ")
+            end = input("End date: ")
+
+            stop = {}
+            stop["country"] = c["name"]["official"]
+            stop["days"] = days
+            stop["start"] = start
+            stop["end"] = end
+
+            stops.append(stop)
+
+        if len(stops) == 0:
+            print("No stops added")
+        else:
+            create_plan(stops)
+
+    elif op == "3":
+        view_plans()
+
+    elif op == "0":
+        break
+
+    else:
+        print("Invalid option")
