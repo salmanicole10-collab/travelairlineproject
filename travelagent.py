@@ -171,3 +171,18 @@ def create_plan(stops):
 
     print("Plan saved!")
     print("Total cost:", plan["total_cost"])
+
+
+def view_plans():
+    plans = load_plans()
+
+    print("--- SAVED PLANS ---")
+
+    if len(plans) == 0:
+        print("No plans saved.")
+        return
+
+    i = 0
+    while i < len(plans):
+        print(i, "-", plans[i]["client"], "| total:", plans[i]["total_cost"])
+        i = i + 1
