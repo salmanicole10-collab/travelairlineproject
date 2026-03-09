@@ -216,3 +216,20 @@ while True:
             show_country(c)
             show_weather(c)
             show_timezones(c)
+            
+    elif op == "2":
+
+        stops = []
+
+        while True:
+
+            name = input("Add country or press enter to finishh): ")
+
+            if name.strip() == "":
+                break
+
+            c = get_country_by_name(name)
+
+            if c == None:
+                print("Country not found")
+                continue
