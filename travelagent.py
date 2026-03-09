@@ -151,3 +151,23 @@ def estimate_cost(stops):
     total = total + 50
 
     return total
+
+def create_plan(stops):
+
+    print("--- CREATE PLAN ---")
+
+    client = input("Client name: ")
+    notes = input("Notes: ")
+
+    plan = {}
+    plan["client"] = client
+    plan["notes"] = notes
+    plan["stops"] = stops
+    plan["total_cost"] = estimate_cost(stops)
+
+    plans = load_plans()
+    plans.append(plan)
+    save_plans(plans)
+
+    print("Plan saved!")
+    print("Total cost:", plan["total_cost"])
