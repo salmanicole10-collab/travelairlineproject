@@ -202,4 +202,17 @@ while True:
     print("2 - Create Travel Plan")
     print("3 - View Saved Plans")
     print("0 - Exit")
-a 
+
+    op = input("Option: ")
+
+    if op == "1":
+
+        name = input("Country name: ")
+        c = get_country_by_name(name)
+
+        if c == None:
+            print("Country not found")
+        else:
+            show_country(c)
+            show_weather(c)
+            show_timezones(c)
