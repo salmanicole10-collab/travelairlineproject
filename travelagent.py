@@ -202,3 +202,4 @@ while True:
     print("2 - Create Travel Plan")
     print("3 - View Saved Plans")
     print("0 - Exit")
+a 
