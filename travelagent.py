@@ -187,7 +187,7 @@ def view_plans():
         print(i, "-", plans[i]["client"], "| total:", plans[i]["total_cost"])
         i = i + 1
 
-#menu
+
 while True:
 
     print("===== LMS TRAVEL AGENCY =====")
