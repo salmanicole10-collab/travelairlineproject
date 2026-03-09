@@ -107,4 +107,13 @@ def show_weather(country):
 
     except:
         print("Weather: N/A")
+
+def show_timezones(country):
+
+    print("--- TIMEZONES ---")
+
+    if "timezones" in country:
+        print("Timezones:", ", ".join(country["timezones"]))
+    else:
+        print("Timezones: N/A")
     
