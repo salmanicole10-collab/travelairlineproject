@@ -1,4 +1,7 @@
 import requests
+from datetime import datetime, timedelta
+
+saved_plans = []
 
 def get_country_by_name(name):
     if name.strip() == "":
@@ -80,6 +83,10 @@ def show_weather(country):
     lat = None
     lon = None
 
+    if "capitalInfo" in country and "latlng" in country["capitalInfo"]:
+        lat = country["capitalInfo"]["latlng"][0]
+        lon = country["capitalInfo"]["latlng"][1]
+        
     if "latlng" in country:
         lat = country["latlng"][0]
         lon = country["latlng"][1]
