@@ -143,10 +143,12 @@ def show_local_time(country):
 
     print("Local time:", local.strftime("%Y-%m-%d %H:%M:%S"))
     
-def save_plans(plans):
-    f = open("plans.json", "w", encoding="utf-8")
-    f.write(str(plans))
-    f.close()
+def show_visa_info(country):
+
+    print("--- VISA INFO ---")
+
+    print("Visa requirements depend on nationality.")
+    print("Please check the embassy website before traveling.")
 
 def estimate_cost(stops):
     total = 0
