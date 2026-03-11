@@ -119,29 +119,50 @@ def show_local_time(country):
 
     print("--- LOCAL TIME ---")
 
-    if "timezones" not in country:
+    lat = None
+    lon = None
+
+    if "capitalInfo" in country and "latlng" in country["capitalInfo"]:
+        lat = country["capitalInfo"]["latlng"][0]
+        lon = country["capitalInfo"]["latlng"][1]
+
+
+    elif "latlng" in country:
+        lat = country["latlng"][0]
+        lon = country["latlng"][1]
+
+    if lat == None or lon == None:
         print("Local time: N/A")
         return
 
-    tz = country["timezones"][0]
-    print("Timezone:", tz)
+    url = "https://api.open-meteo.com/v1/forecast?latitude=" + str(lat) + "&longitude=" + str(lon) + "&current_weather=true&timezone=auto"
 
-    offset = tz.replace("UTC", "")
-    now = datetime.now()
+    try:
+        r = requests.get(url)
 
-    if offset == "":
-        local = now
-    else:
-        sign = offset[0]
-        hours = int(offset[1:3])
-        minutes = int(offset[4:6])
+        if r.status_code == 200:
+            data = r.json()
 
-        if sign == "+":
-            local = now + timedelta(hours=hours, minutes=minutes)
+            if "timezone" in data:
+                print("Timezone:", data["timezone"])
+            else:
+                print("Timezone: N/A")
+
+            if "current_weather" in data and "time" in data["current_weather"]:
+                raw_time = data["current_weather"]["time"]
+
+                try:
+                    nice_time = datetime.strptime(raw_time, "%Y-%m-%dT%H:%M")
+                    print("Local time:", nice_time.strftime("%Y-%m-%d %H:%M"))
+                except:
+                    print("Local time:", raw_time)
+            else:
+                print("Local time: N/A")
         else:
-            local = now - timedelta(hours=hours, minutes=minutes)
+            print("Local time: N/A")
 
-    print("Local time:", local.strftime("%Y-%m-%d %H:%M:%S"))
+    except:
+        print("Local time: N/A")
     
 def show_visa_info(country):
 
