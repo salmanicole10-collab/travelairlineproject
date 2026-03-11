@@ -150,6 +150,15 @@ def show_visa_info(country):
     print("Visa requirements depend on nationality.")
     print("Please check the embassy website before traveling.")
 
+def show_timezones(country):
+
+    print("--- TIMEZONES ---")
+
+    if "timezones" in country:
+        print("Timezones:", ", ".join(country["timezones"]))
+    else:
+        print("Timezones: N/A")
+
 def estimate_cost(stops):
     total = 0
 
