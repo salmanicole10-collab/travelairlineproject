@@ -194,6 +194,32 @@ def ask_days():
 
         print("Invalid days. Enter a positive number.")
 
+def ask_dates(days):
+
+    while True:
+
+        start = input("Start date (YYYY-MM-DD): ")
+        start_obj = valid_date(start)
+
+        end = input("End date (YYYY-MM-DD): ")
+        end_obj = valid_date(end)
+
+        if start_obj == None or end_obj == None:
+            print("Invalid date format.")
+            continue
+
+        if end_obj < start_obj:
+            print("End date cannot be before start date.")
+            continue
+
+        diff = (end_obj - start_obj).days
+
+        if diff != days:
+            print("Dates do not match number of days.")
+            continue
+
+        return start, end
+
 def create_plan(stops):
 
     print("--- CREATE PLAN ---")
