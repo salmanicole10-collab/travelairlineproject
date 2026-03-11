@@ -166,6 +166,12 @@ def estimate_cost(stops):
 
     return total
 
+def valid_date(text):
+    try:
+        return datetime.strptime(text, "%Y-%m-%d")
+    except:
+        return None
+
 def create_plan(stops):
 
     print("--- CREATE PLAN ---")
