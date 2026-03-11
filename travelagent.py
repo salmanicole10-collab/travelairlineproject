@@ -222,6 +222,8 @@ def ask_dates(days):
 
 def create_plan(stops):
 
+    global saved_plans
+
     print("--- CREATE PLAN ---")
 
     client = input("Client name: ")
