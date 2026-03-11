@@ -261,7 +261,7 @@ def view_plans():
         print("Notes:", plan["notes"])
         print("Total cost:", plan["total_cost"])
         print("Stops:")
-        
+
         j = 0
         while j < len(plan["stops"]):
 
@@ -304,6 +304,8 @@ while True:
         else:
             show_country(c)
             show_weather(c)
+            show_local_time(c)
+            show_visa_info(c)
             show_timezones(c)
             
     elif op == "2":
@@ -325,11 +327,13 @@ while True:
 
             show_country(c)
             show_weather(c)
+            show_local_time(c)
+            show_visa_info(c)
             show_timezones(c)
 
-            days = int(input("Days: "))
-            start = input("Start date: ")
-            end = input("End date: ")
+            days = ask_days()
+
+            start, end = ask_dates(days)
 
             stop = {}
             stop["country"] = c["name"]["official"]
