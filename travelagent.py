@@ -235,9 +235,7 @@ def create_plan(stops):
     plan["stops"] = stops
     plan["total_cost"] = estimate_cost(stops)
 
-    plans = load_plans()
-    plans.append(plan)
-    save_plans(plans)
+    saved_plans.append(plan)
 
     print("Plan saved!")
     print("Total cost:", plan["total_cost"])
