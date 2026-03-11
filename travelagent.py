@@ -170,7 +170,7 @@ def estimate_cost(stops):
     if len(stops) > 1:
         total = total + (len(stops) - 1) * 200
 
-    # fee
+    # feee 
     total = total + 50
 
     return total
@@ -179,7 +179,7 @@ def valid_date(text):
     try:
         return datetime.strptime(text, "%Y-%m-%d")
     except:
-        return None
+        return None 
 
 def create_plan(stops):
 
