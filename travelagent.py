@@ -180,6 +180,18 @@ def valid_date(text):
         return datetime.strptime(text, "%Y-%m-%d")
     except:
         return None 
+def ask_days():
+    while True:
+
+        text = input("Days: ")
+
+        if text.isdigit():
+            days = int(text)
+
+            if days > 0:
+                return days
+
+        print("Invalid days. Enter a positive number.")
 
 def create_plan(stops):
 
