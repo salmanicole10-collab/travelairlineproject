@@ -86,7 +86,7 @@ def show_weather(country):
     if "capitalInfo" in country and "latlng" in country["capitalInfo"]:
         lat = country["capitalInfo"]["latlng"][0]
         lon = country["capitalInfo"]["latlng"][1]
-        
+
     if "latlng" in country:
         lat = country["latlng"][0]
         lon = country["latlng"][1]
@@ -115,28 +115,33 @@ def show_weather(country):
     except:
         print("Weather: N/A")
 
-def show_timezones(country):
+def show_local_time(country):
 
-    print("--- TIMEZONES ---")
+    print("--- LOCAL TIME ---")
 
-    if "timezones" in country:
-        print("Timezones:", ", ".join(country["timezones"]))
+    if "timezones" not in country:
+        print("Local time: N/A")
+        return
+
+    tz = country["timezones"][0]
+    print("Timezone:", tz)
+
+    offset = tz.replace("UTC", "")
+    now = datetime.now()
+
+    if offset == "":
+        local = now
     else:
-        print("Timezones: N/A")
-    
-def load_plans():
-    try:
-        f = open("plans.json", "r", encoding="utf-8")
-        text = f.read()
-        f.close()
+        sign = offset[0]
+        hours = int(offset[1:3])
+        minutes = int(offset[4:6])
 
-        if text.strip() == "":
-            return []
+        if sign == "+":
+            local = now + timedelta(hours=hours, minutes=minutes)
+        else:
+            local = now - timedelta(hours=hours, minutes=minutes)
 
-        plans = eval(text)
-        return plans
-    except:
-        return []
+    print("Local time:", local.strftime("%Y-%m-%d %H:%M:%S"))
     
 def save_plans(plans):
     f = open("plans.json", "w", encoding="utf-8")
