@@ -242,17 +242,38 @@ def create_plan(stops):
 
 
 def view_plans():
-    plans = load_plans()
+
+    global saved_plans
 
     print("--- SAVED PLANS ---")
 
-    if len(plans) == 0:
+    if len(saved_plans) == 0:
         print("No plans saved.")
         return
 
     i = 0
-    while i < len(plans):
-        print(i, "-", plans[i]["client"], "| total:", plans[i]["total_cost"])
+    while i < len(saved_plans):
+
+        plan = saved_plans[i]
+
+        print("\nPlan", i)
+        print("Client:", plan["client"])
+        print("Notes:", plan["notes"])
+        print("Total cost:", plan["total_cost"])
+        print("Stops:")
+        
+        j = 0
+        while j < len(plan["stops"]):
+
+            stop = plan["stops"][j]
+
+            print(" ", j + 1, "-", stop["country"])
+            print("    Days:", stop["days"])
+            print("    Start:", stop["start"])
+            print("    End:", stop["end"])
+
+            j = j + 1
+
         i = i + 1
 
 
